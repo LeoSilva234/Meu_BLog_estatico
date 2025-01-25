@@ -62,10 +62,6 @@ form button {
 
 body {
     background-color: var(--cor-do-fundo);
-    background-image: url('../img/bg01.jpg');
-    background-repeat: repeat;
-    background-position: center;
-    background-attachment: fixed;
 }
 
 /* Estrutura da página */
