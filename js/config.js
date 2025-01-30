@@ -1,30 +1,22 @@
 /**
- * Chaves de conexão ccom o Firebase.
- * ATENÇÃO! Sempre troque essas chaves pelas chaves do seu projeto.
- **/
-const firebaseConfig = {
-  apiKey: "AIzaSyDdHbHUxuAzSwMJkLZYqrsgAbuN5SeoAj0",
-  authDomain: "meu-blog-estatico-c96ef.firebaseapp.com",
-  projectId: "meu-blog-estatico-c96ef",
-  storageBucket: "meu-blog-estatico-c96ef.firebasestorage.app",
-  messagingSenderId: "176305610540",
-  appId: "1:176305610540:web:e9c5a14c2f6fe284625689"
-};
-
-/**
- * Configuração do site;
+ * Configuração do site.
+ * 
+ * Essas são chaves de configuração global do site que permitem o 
+ * reaproveitamento rápido do código.
+ * 
+ * Você pode adicionar novas chaves aqui conforme sua necessidade.
  **/
 const site = {
 
   /**
-    * Nome do site usado na tag <title>...</title> e nas interações dinâmicas
-    **/
+   * Nome do site usado na tag <title>...</title> e nas interações dinâmicas
+   **/
   nome: "Meu Blog Estático",
 
   /**
    * Logotipo do site, usado na tag <header>...</title>
    */
-  logo: "img/logo-removebg-preview (3).png",
+  logo: "img/logo.png",
 
   /**
    * Controla a ação ao clicar no link do usuário logado no menu principal
@@ -42,8 +34,8 @@ const site = {
    * Licensa do site usada no rodapé
    **/
   licensa: `
-  <i class="fa-regular fa-copyright fa-rotate-180 fa-fw"></i>
-  <span>Copyleft <span id="footerAno"></span> Joca da Silva</span>
-  `,
+    <i class="fa-regular fa-copyright fa-rotate-180 fa-fw"></i>
+    <span>Copyleft <span id="footerAno"></span> Joca da Silva</span>
+    `,
 
 }
