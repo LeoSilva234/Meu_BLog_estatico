@@ -12,7 +12,7 @@
  * @param {Date} data - A data a ser formatada.
  * @param {string} formato - O formato desejado ('ISO' ou 'BR').
  * @returns {string} A data formatada conforme o formato especificado.
- */
+ **/
 function formatarData(data, formato) {
     const ano = data.getFullYear();
     const mes = String(data.getMonth() + 1).padStart(2, '0');
@@ -20,7 +20,6 @@ function formatarData(data, formato) {
     const horas = String(data.getHours()).padStart(2, '0');
     const minutos = String(data.getMinutes()).padStart(2, '0');
     const segundos = String(data.getSeconds()).padStart(2, '0');
-
     if (formato === 'ISO') {
         return `${ano}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
     } else if (formato === 'BR') {
@@ -33,7 +32,7 @@ function formatarData(data, formato) {
 /**
  * Obtém a data e hora atual no formato ISO.
  * @returns {string} A data e hora atual no formato ISO.
- */
+ **/
 function agoraISO() {
     const agora = new Date();
     return formatarData(agora, 'ISO');
@@ -43,17 +42,17 @@ function agoraISO() {
  * Converte uma data do formato ISO para o formato BR.
  * @param {string} dataISO - A data no formato ISO (YYYY-MM-DD HH:MM:SS).
  * @returns {string} A data no formato BR (DD/MM/YYYY HH:MM).
- */
+ **/
 function dataISOparaBR(dataISO) {
     const data = new Date(dataISO);
     return formatarData(data, 'BR');
 }
 
 /**
- * Converte uma data do formato JavaScript para o formato ISO.
+ * Converte uma data do formato JavaScript (GMT) para o formato ISO.
  * @param {Date} dataJS - A data no formato JavaScript.
  * @returns {string} A data no formato ISO (YYYY-MM-DD HH:MM:SS).
- */
+ **/
 function dataJStoISO(dataJS) {
     const data = new Date(dataJS);
     return formatarData(data, 'ISO');
@@ -70,7 +69,7 @@ function dataJStoISO(dataJS) {
  *     Selecionar por classe: let el = _('.minhaClasse'); // Retorna todos os elementos com a classe "minhaClasse"
  *     Selecionar por tag (ou seletores mais complexos): let el = _('div > p'); // Retorna todos os <p> dentro de <div>
  *     Selecionar elemento por tag: let el = _('i'); // Retorna todos os elementos <i>
- */
+ **/
 function _(seletor) {
     if (seletor.startsWith('#') || seletor.startsWith('.') || seletor.includes(' ')) {
         const resultado = document.querySelectorAll(seletor);
@@ -78,15 +77,46 @@ function _(seletor) {
     }
     return document.querySelectorAll(seletor);
 }
+
 /**
- * Login no firebase Authentication
+ * Login no Firebase Authentication
  */
-function fbSigIn(){
+function fbSigIn() {
     firebase.auth().signInWithPopup(provider);
 }
-function fbSignOut(){
+
+/**
+ * Função para realizar o logout do Firebase e redirecionar o usuário, se necessário.
+ * 
+ * Esta função efetua o logout do Firebase, usando o método `signOut` da autenticação do Firebase.
+ * Se o parâmetro `abrePagina` for fornecido e não estiver vazio, o navegador será redirecionado para a URL especificada.
+ *
+ * @param {string} [abrePagina=''] - URL para a qual o usuário será redirecionado após o logout. 
+ *                                   Se não for fornecido ou for uma string vazia, o redirecionamento não ocorre.
+ * 
+ * @returns {void} - A função não retorna nenhum valor.
+ * 
+ * @example
+ * // Realiza o logout e redireciona o usuário para a página inicial.
+ * fbSignOut('index.html');
+ * 
+ * @example
+ * // Realiza o logout sem redirecionar.
+ * fbSignOut();
+ */
+function fbSignOut(abrePagina = '') {
+    // Realiza o logout do Firebase
     firebase.auth().signOut();
+
+    // Se o parâmetro abrePagina não for vazio, redireciona para a URL fornecida
+    if (abrePagina != '') {
+        location.href = abrePagina;
+    }
 }
+
+/**
+ * Retorna o template HTML padrão do site
+ **/
 function template() {
     return `
 
